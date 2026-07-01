@@ -6,7 +6,11 @@
     <title>Torre de Jesús - Sagrada Familia</title>
     
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="preload" href="assets/fonts/Cinzel-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin> 
+    <link rel="preload" href="assets/fonts/Cinzel-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Cookies Components -->
+    <link rel="stylesheet" href="components/cookies/styles_cookies_panda.css">
+    <script src="components/cookies/script_cookies_panda.js"></script>
+    <script src="components/cookies/script_boton_flotante_preferencias.js" defer></script>
     <style>
         @font-face {
             font-family: 'Title-Cinzel';
@@ -22,7 +26,6 @@
             --title: 'Title-Cinzel';
             --body: 'system-ui';
         }
-
         * {
             box-sizing: border-box;
             padding: 0;
@@ -58,7 +61,6 @@
             line-height: 0.78em;
             cursor: pointer;
         }
-
         h2 {
             color: var(--primary);
             font-family: var(--title);
