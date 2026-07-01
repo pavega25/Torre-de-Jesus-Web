@@ -344,6 +344,7 @@
             color: var(--accent);
         }
         .subcont-footer img {
+            height: 300px;
             width: 100%;
         }
         @media (min-width:992px) {
@@ -453,10 +454,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav-list">
-                    <li><a class="nav-item" href="#">Datos</a></li>
-                    <li><a class="nav-item" href="#">Comparativa</a></li>
-                    <li><a class="nav-item" href="#">Galeria</a></li>
-                    <li><a class="nav-item" href="#">Newsletter</a></li>
+                    <li><a class="nav-item" href="#datos">Datos</a></li>
+                    <li><a class="nav-item" href="#comparativa">Comparativa</a></li>
+                    <li><a class="nav-item" href="#galeria">Galeria</a></li>
+                    <li><a class="nav-item" href="#newsletter">Newsletter</a></li>
                 </ul>
             </div>
         </nav>
@@ -482,7 +483,7 @@
         </div>
         
         <!-- Bloque informativo -->
-        <section class="info-box">
+        <section class="info-box" id="datos">
             <h3>Datos clave</h3>
             <div class="main-cont-card">
                 <div class="cont-card">
@@ -509,7 +510,7 @@
             
         </section>
         <!-- Tabla comparativa -->
-        <section>
+        <section id="comparativa">
             <h3>Comparativa de torres</h3>
             <table>
                 <thead>
@@ -539,7 +540,7 @@
                 title="Imagen comparativa" alt="Fotografía comparativa de las torres, Sagrada Familia" class="img-comparativa" loading="lazy">
         </section>
         <!-- GALERÍA DE IMÁGENES EN ALTA RESOLUCIÓN (4 fotos) -->
-        <section>
+        <section id="galeria">
             <h3>Galería arquitectónica</h3>
             <div class="galeria carousel slide carousel-fade" id="carouselFade">
                 <div class="carousel-inner">
@@ -579,15 +580,15 @@
             </div>
         </section>
 
-        <section class="sec-boletin">
+        <section class="sec-boletin" id="newsletter">
             <h4>Enterate de todas las novedades de la Basílica</h4>
             <p><small>Suscríbete a nuestro Boletin</small></p>
             <form action="https://formsubmit.co/materializacreative@gmail.com" method="POST">
                 <div class="d-flex align-items-end">
-                    <div class="">
+                    <div class="newsletter-input">
                         <label for="email">Correo electrónico:</label>
                         <input type="email" id="email" placeholder="Escribe tu email aquí"
-                        pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/">
+                        pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/" style="width: 100%;">
                     </div>
                     <button class="btn-boletin" type="submit">Enviar</button>
                 </div>               
