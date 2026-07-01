@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torre de Jesús - Sagrada Familia</title>
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="preload" href="assets/fonts/Cinzel-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin> 
+    <style>
+        @font-face {
+            font-family: 'Title-Cinzel';
+            src: url(assets/fonts/Cinzel-VariableFont_wght.woff2);
+            font-display: swap;
+        }
+        :root {
+            --primary: #50362a;
+            --secondary: #77b5ce;
+            --accent: #dc0526;
+            --hover-accent: #f5062a;
+            --bg: #f2f2f2;
+            --title: 'Title-Cinzel';
+            --body: 'system-ui';
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            font-family: var(--body);
+            background-color: var(--bg);
+        }
+
+        .header-sin-semantica {
+            background:
+                radial-gradient(circle 270px at 50% -120px, var(--bg), #7e98b800),
+                linear-gradient(90deg, rgba(129, 156, 185, 1) 0%, rgba(132, 159, 188, 1) 25%, rgba(133, 160, 189, 1) 50%, rgba(132, 159, 188, 1) 75%, rgba(133, 160, 189, 1) 100%);
+        }
+        h1 {
+            color: var(--primary);
+            font-family: var(--title);
+            font-size: 3.2em;
+            font-weight: 800;
+            line-height: 0.8em;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 0px;
+            text-shadow: 0 2px 3px var(--bg);
+            transition: all 0.2s ease-in-out;
+        }
+        h1:hover {
+            transform: scale(1.1);
+            text-shadow: 0 4px 8px var(--bg);
+            line-height: 0.78em;
+            cursor: pointer;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-family: var(--title);
+            font-size: 0.9em;
+            font-weight: 700;
+            word-spacing: 0px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .parrafo-desc {
+            color: #333;
+            font-size: 20px;
+            line-height: 1.2;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .imagen-torre {
+            position: relative;
+            object-fit: cover;
+            width: 100%;
+            height: 600px;
+            padding: 0;
+            margin: 0;
+            z-index: 0;
+        }
+
+        .hero {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button-cta {
+            position: absolute;
+            top: 65%;
+            background-color: var(--accent);
+            color: var(--bg);
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-family: var(--title);
+            font-weight: 600;
+            font-kerning: 3em;
+            font-size: 1.3em;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.24s ease-in-out;
+            box-shadow: 0 5px 10px var(--primary);
+        }
+
+        .button-cta:hover {
+            background-color: var(--hover-accent);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 15px var(--primary);
+            border-radius: 35px;
+        }
+
+        .button-cta:active {
+            background-color: var(--bg);
+            color: var(--primary);
+            box-shadow: 0 0px 30px var(--bg);
+            transform: scale(1.1) translateY(-10px);
+            transition: all 0.1s ease-in-out;
+        }
+
+        .nav-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--primary);
+            width: 100%;
+            height: 150px;
+            padding: 0;
+            position: fixed;
+            left: 0;
+            bottom: 23px;
+            z-index: 300;
+        }
+
+        .nav-item {
+            font-family: var(--title);
+            font-size: 0.75em;
+            font-weight: 500;
+            color: var(--bg);
+            text-decoration: none;
+        }
+
+        .nav-list li {
+            transition: all 0.15s ease-in-out;
+            list-style: none;
+            padding: 1%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .nav-list li:hover {
+            background-color: var(--bg);
+            cursor: pointer;
+        }
+
+        .nav-list li:hover a {
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .navbar-toggler {
+            position: fixed;
+            width: 100%;
+            left: 0px;
+            bottom: 0px;
+            z-index: 500;
+            background-color: var(--primary);
+        }
+
+        .info-box {
+            background-color: var(--bg);
+            padding: 0px;
+            border: none;
+            margin: 50px auto;
+            color: #2c1810;
+        }
+
+        h3 {
+            font-family: var(--title);
+            font-size: 30px;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .main-cont-card {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .cont-card {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card-datos {
+            text-align: center;
+            height: 100px;
+            width: 100%;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 10px;
+            transition: all 0.2s ease-in-out;
+            /* box-shadow: inset 0 0px 10px #50362a62; */
+            /* border: solid 1px var(--secondary); */
+        }
+
+        .card-datos:hover {
+            background-color: var(--primary);
+            color: var(--bg);
+            transform: scale(1.1);
+        }
+
+        .card-datos p {
+            font-family: var(--title);
+            font-size: 2em;
+            font-weight: 100;
+            line-height: 30px;
+        }
+
+        .span-card {
+            font-family: var(--title);
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        .img-comparativa {
+            object-fit: cover;
+            width: 100%;
+            height: 300px;
+            object-position: top;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-color: #77b5ce;
+            background-color: #fff8f0;
+        }
+
+        th {
+            color: var(--primary);
+            font-family: var(--title);
+            font-weight: 500;
+            font-size: 1.2em;
+            background-color: var(--secondary);
+            border: 1px solid var(--bg);
+            padding: 18px;
+        }
+
+        td {
+            padding: 18px;
+            font-size: 20px;
+            border: 1px solid #77b5ce;
+        }
+
+        tr:hover {
+            background-color: var(--primary);
+            color: var(--bg);
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border: none;
+        }
+
+        .sec-boletin {
+            background-color: var(--secondary);
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .btn-boletin {
+            font-family: var(--title);
+            font-weight: 500;
+            background-color: var(--accent);
+            color: var(--bg);
+            padding: 5px 30px;
+            font-size: 22px;
+            border: none;
+            width: 100%;
+            height: 40px;
+        }
+
+        .btn-boletin:hover {
+            background-color: var(--hover-accent);
+        }
+
+        footer {
+            margin-top: 0px;
+            font-size: 1em;
+            color: var(--bg);
+            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            background-color: var(--primary);
+            height: 400px;
+        }
+
+        footer p {
+            color: white;
+            text-align: center;
+        }
+
+        input {
+            height: 40px;
+            padding: 5px;
+            font-size: 18px;
+            border: none;
+            outline: none;
+        }
+        a {
+            color: var(--accent);
+        }
+        .subcont-footer img {
+            width: 100%;
+        }
+        @media (min-width:992px) {
+            picture {
+                width: 100%;
+                height: 82dvh;
+                
+            }
+            .imagen-torre {
+                width: 100%;
+                height: 100%;
+                object-position: top;
+            }
+            .nav-list {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0);
+                width: 100%;
+                position: initial;
+                height: 50px;
+                padding: 0;
+                z-index: 300;
+            }
+            .nav-item {
+                font-family: var(--title);
+                font-size: 1em;
+                font-weight: 500;
+                color: var(--bg);
+                text-decoration: none;
+            }
+            .nav-list li {
+                transition: all 0.15s ease-in-out;
+                list-style: none;
+                padding: 1%;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-list li:hover {
+                background-color: var(--bg);
+                cursor: pointer;
+            }
+            .nav-list li:hover a {
+                cursor: pointer;
+                color: var(--primary);
+                font-weight: 600;
+                font-size: 1.2em;
+                transition: all 0.1s ease-in-out;
+            }
+            .parrafo-desc {
+                position: absolute;
+                top: 700px;
+                max-width: 600px;
+                background-color: var(--bg);
+                padding: 8px;
+                border-radius: 10px;
+            }
+            .button-cta {
+                top: 90%;
+            }
+            section {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .img-comparativa {
+                object-fit: cover;
+                width: 100%;
+                height: 600px;
+                object-position: 0% 5%;
+                margin-bottom: 40px;
+            }
+            .galeria img {
+                width: 100%;
+                height: 600px;
+                object-fit: cover;
+                border: none;
+            }
+
+            .subcont-footer img {
+                height: 200px;
+                width: 50%;
+            }
+            footer {
+                margin-top: 0px;
+                font-size: 1em;
+                color: var(--bg);
+                text-align: center;
+                padding-top: 50px;
+                padding-bottom: 50px;
+                background-color: var(--primary);
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-sin-semantica">
+        <h1>Torre de Jesucristo</h1>
+        <h2>La Sagrada Familia · Barcelona</h2>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav-list">
+                    <li><a class="nav-item" href="#">Datos</a></li>
+                    <li><a class="nav-item" href="#">Comparativa</a></li>
+                    <li><a class="nav-item" href="#">Galeria</a></li>
+                    <li><a class="nav-item" href="#">Newsletter</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="hero">
+            <picture>
+                <source media="(min-width: 992px)" srcset="assets\images\Hero_Desktop.webp" fetchpriority="high">
+                
+                <source media="(min-width: 576px)" srcset="assets\images\Hero_Desktop.webp" fetchpriority="high">
+                
+                <img class="imagen-torre" 
+                    src="assets/images/TorreDeJesusHero_compressed (1).webp" 
+                    title="Vista de la torre de Jesús" 
+                    alt="Fotografía de la entrada a la sagrada familia" 
+                    fetchpriority="high">
+            </picture>
+            <p class="parrafo-desc">
+                La última pieza magistral ha sido agregada a la <strong>Basílica de la Sagrada Familia</strong>, 
+                diseñada por <em>Antoni Gaudí</em>. <br> La<strong> Torre de Jesucristo </strong>tiene una altura de <strong>172,5 metros</strong>, convirtiéndola en la torre de iglesia más alta del mundo.
+            </p>
+            <button class="button-cta">Entradas</button>
+        </div>
+        
+        <!-- Bloque informativo -->
+        <section class="info-box">
+            <h3>Datos clave</h3>
+            <div class="main-cont-card">
+                <div class="cont-card">
+                    <div class="card-datos">
+                        <span class="span-card">Altura:</span> <br> 
+                        <p>172,5 m</p> 
+                    </div>
+                    <div class="card-datos">
+                        <span class="span-card">Diseño:</span> <br>
+                        <p>Antoni Gaudí</p>
+                    </div>
+                </div>
+                <div class="cont-card">
+                    <div class="card-datos">
+                        <span class="span-card">Inicio:</span> <br> 
+                        <p>1882</p> 
+                    </div>
+                    <div class="card-datos">
+                        <span class="span-card">Finalización:</span> <br> 
+                        <p>2026</p> 
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <!-- Tabla comparativa -->
+        <section>
+            <h3>Comparativa de torres</h3>
+            <table>
+                <thead>
+                    <th><strong>Torre</strong></th>
+                    <th><strong>Altura</strong></th>
+                    <th><strong>Finalización</strong></th>
+                </thead>
+                <tr>
+                    <td>Jesucristo</td>
+                    <td>172,5m</td>
+                    <td>2026</td>
+                </tr>
+                <tr>
+                    <td>Virgen María</td>
+                    <td>138m</td>
+                    <td>2025</td>
+                </tr>
+                <tr>
+                    <td>San Marcos</td>
+                    <td>135m</td>
+                    <td>2025</td>
+                </tr>
+            </table>
+            <!-- IMAGEN 2: Fachada de la Sagrada Familia - Unsplash -->
+            <img 
+                src="assets/images/CompraracionTorres.webp"
+                title="Imagen comparativa" alt="Fotografía comparativa de las torres, Sagrada Familia" class="img-comparativa" loading="lazy">
+        </section>
+        <!-- GALERÍA DE IMÁGENES EN ALTA RESOLUCIÓN (4 fotos) -->
+        <section>
+            <h3>Galería arquitectónica</h3>
+            <div class="galeria carousel slide carousel-fade" id="carouselFade">
+                <div class="carousel-inner">
+                    <!-- IMAGEN 3: Detalle de la fachada - Unsplash -->
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/flagged/photo-1569162002280-e4d071943f4e?q=80&w=856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1200&q=75&fm=webp" 
+                        title="Detalle de la fachada de la Sagrada Familia" alt="Fotografía de la entrada y las torres" class="img-galeria d-block w-100" loading="lazy">
+                    </div>
+                    <!-- IMAGEN 4: Interior de la basílica - Unsplash -->
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1776616002849-58e3f924ab43?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1200&q=75&fm=webp" 
+                        title="Interior de la Sagrada Familia" alt="Fotografía del interior, Jesucristo crucificado" class="img-galeria d-block w-100" loading="lazy">
+                    </div>
+                    <!-- IMAGEN 5: Vidrieras - Unsplash -->
+                    <div class="carousel-item active">
+                        <img src="https://images.unsplash.com/photo-1735424325493-7dec695219c4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1200&q=75&fm=webp" 
+                        title="Vidrieras de la Sagrada Familia" alt="Fotografía de las vidrieras" class="img-galeria" loading="lazy">
+                    </div>
+                    <!-- IMAGEN 6: Vista aérea - Unsplash -->
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1200&q=75&fm=webp" 
+                        title="Vista aérea de la Sagrada Familia" alt="Fotografía vista aerea Sagrada Familia al atardecer" class="img-galeria" loading="lazy">
+                    </div>
+                    <!-- Control de Botones - Carousel Boostrap -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselFade" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselFade" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div style="display: flex; justify-content: center; text-align: center;">
+                    <p>¿Quieres ver la <strong>Galeria Completa?</strong> <br> <a href="https://sagradafamilia.org/es/galeria-fotografica/" onclick="alert('Enlace simbólico')">clic aquí</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec-boletin">
+            <h4>Enterate de todas las novedades de la Basílica</h4>
+            <p><small>Suscríbete a nuestro Boletin</small></p>
+            <form action="https://formsubmit.co/materializacreative@gmail.com" method="POST">
+                <div class="d-flex align-items-end">
+                    <div class="">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" placeholder="Escribe tu email aquí"
+                        pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/">
+                    </div>
+                    <button class="btn-boletin" type="submit">Enviar</button>
+                </div>               
+            </form>
+        </section>
+        
+    </main>
+
+    <footer>
+        <div class="d-flex cont-footer">
+            <div class="col-6 subcont-footer">
+                <img src="assets/images/Sagrada-Familia-Logo.webp" title="Sagrada Familia Logotipo" alt="Logo vectorizado de la Basílica" loading="lazy">
+            </div>
+            <div class="col-6 subcont-footer">
+                <img src="assets/images/unesco-cast-blanco.webp" title="Reconocimiento Unesco, patrimonio mundial desde 1984" alt="Imagen con logotipo de la unesco, reconocimiento como patrimonio mundial, 1984" loading="lazy">
+            </div>
+        </div>
+        <p>© 2026 · Actividad educativa sobre optimización web</p>
+        <p><small>Diseñado para ser mejorado con WAVE y Lighthouse</small></p>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
